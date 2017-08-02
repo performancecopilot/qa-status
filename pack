@@ -189,7 +189,7 @@ $nflag || rm -rf [0-9]*
 rm -f /tmp/msg
 cat <<End-of-File >/tmp/msg
 Details for the most commonly failing tests are available from
-git://github.com/performancecopilot/qa-status.git
+https://github.com/performancecopilot/qa-status
 (note we've moved from oss.sgi.com to github)
 
 === Synopsis ===
