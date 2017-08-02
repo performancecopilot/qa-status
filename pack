@@ -1,0 +1,215 @@
+#!/bin/sh
+
+tmp=/var/tmp/$$
+sts=1
+trap "rm -f summary $tmp.*; exit \$sts" 0 1 2 3 15
+
+_usage()
+{
+    echo "Usage: $0 [-n] [-p pct]"
+    sts=1
+    exit
+}
+
+nflag=false
+threshold=5	# include tests with >= $threshold % failures in tarball
+while getopts np:? c
+do
+    case $c
+    in
+	n)  # dry run
+	    nflag=true
+	    ;;
+
+	p)
+	    threshold=$OPTARG
+	    ;;
+
+	?)
+	    _usage
+	    # NOTREACHED
+	    ;;
+    esac
+done
+shift `expr $OPTIND - 1`
+
+if [ $# -gt 0 ]
+then
+    _usage
+    # NOTREACHED
+fi
+
+rm -rf summary [0-9]*
+pcp-qa-summary -fr >summary
+$nflag && echo "Created summary"
+
+BASE=$HOME/Logs/by-vm
+
+sed <summary \
+    -e 's/\([0-9]\)  *\([0-9][0-9]*\)%/\1	\2/' \
+    -e 's/   /  ./g' \
+| awk '
+NF == 0		{ next }
+$1 == "Host"	{ want = 1
+		  for (i = 4; i <= NF; i++) host[i-4] = $i
+		  nhost = NF - 4
+		  next
+		}
+$1 == "Test"	{ next }
+want == 1 && $2 >= '$threshold'	{
+		  for (i = 3; i <= nhost+3; i++) {
+		    if ($i == "X")
+			print $1,host[i-3]
+		  }
+		}
+want == 1 && $2 < '$threshold'	{ exit }' \
+| while read seq host
+do
+    case "$host"
+    in
+	bo)
+	    host=bozo
+	    ;;
+	bv)
+	    host=bozo-vm
+	    ;;
+	bl)
+	    host=bozo-laptop
+	    ;;
+	gr)
+	    host=grundy.sgi.com
+	    ;;
+	fu)
+	    host=fuji
+	    ;;
+	[0-9][0-9])
+	    host=vm$host
+	    ;;
+	*)
+	    echo "Botch: don't know what to do with host $host"
+	    exit
+	    ;;
+    esac
+    echo "$seq" >>$tmp.tmp
+
+    if [ ! -d $BASE/$host ]
+    then
+	echo "Botch: missing dir $BASE/$host"
+	exit
+    fi
+
+    if [ ! -d $BASE/$host/qa ]
+    then
+	echo "Botch: missing dir $BASE/$host/qa"
+	exit
+    fi
+
+    if [ -f $BASE/$host/qa/$seq.out.bad ]
+    then
+	echo "$seq `sum <$BASE/$host/qa/$seq.out.bad`" >>$tmp.sum
+    else
+	echo "Warning: missing file $BASE/$host/qa/$seq.out.bad"
+    fi
+
+    [ -d $seq ] || mkdir $seq
+
+    for file in $seq.out $seq.out.bad $seq.full
+    do
+	if [ -f $BASE/$host/qa/$file ]
+	then
+	    cp $BASE/$host/qa/$file "$seq/$host:$file"
+	fi
+    done
+
+done
+
+tar czf files.tgz summary [0-9]*[0-9]
+if $nflag
+then
+    echo "Created files.tgz"
+else
+    :
+fi
+
+rm -f README
+cat <<End-of-File >README
+QA Status from Ken McDonell's QA Farm in Melbourne
+
+Last updated: `date`
+
+End-of-File
+grep "^Summary:" summary >>README
+cat <<End-of-File >>README
+
+QA Test  Fail  Failure Signatures (number of different failure patterns)
+End-of-File
+
+sort $tmp.tmp \
+| uniq -c \
+| while read count seq
+do
+    signatures=`grep "^$seq " $tmp.sum \
+		| sort \
+		| uniq -c \
+		| sed -e 's/^  *//' -e 's/ .*//' \
+		| sort -nr \
+		| tr '[\012]' '[ ]'`
+    if [ "$seq" -lt 1000 ]
+    then
+	printf '    %3s' $seq
+    else
+	printf '   %4s' $seq
+    fi
+    printf '  %4d  %s\n' $count "$signatures"
+done \
+| sort -nr -k 2,2 -k 1,1 >>README
+cat <<End-of-File >>README
+            ^  ^
+	    |  |
+	    |  +-- A B C ... means one failure signature occurred A times,
+	    |      another occurred B times, a third occurred C times, ...
+	    +-- total number of failures for this test, equals A+B+C+...
+
+The tarball in this directory (files.gz) contains .out, .out.bad and
+possibly .full files for all failing test cases where a test failed
+on at least ${threshold}% of the QA hosts.
+
+End-of-File
+cat summary >>README
+
+if $nflag
+then
+    echo "Created README"
+else
+    :
+fi
+
+$nflag || rm -rf [0-9]*
+
+rm -f /tmp/msg
+cat <<End-of-File >/tmp/msg
+Details for the most commonly failing tests are available from
+git://github.com/performancecopilot/qa-status.git
+(note we've moved from oss.sgi.com to github)
+
+=== Synopsis ===
+
+End-of-File
+
+awk <README >>/tmp/msg '
+BEGIN				{ want = 1 }
+want == 0 && $1 == "Summary:"	{ want = 1 }
+$3 == "Failures"		{ print "Tests that failed on at least '${threshold}'% of the QA hosts ..."; print "" }
+want == 1			{ print }
+NR == 2				{ want = 0 }'
+
+if $nflag
+then
+    echo "Created /tmp/msg"
+else
+    echo "To send email ..."
+    echo '$ sendcommitmail'
+fi
+
+sts=0
+exit

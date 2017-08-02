@@ -1,0 +1,131 @@
+QA Status from Ken McDonell's QA Farm in Melbourne
+
+Last updated: Thursday 3 August  09:22:59 AEST 2017
+
+Summary: 27184 run, 87 failed (0.32%)
+
+QA Test  Fail  Failure Signatures (number of different failure patterns)
+   1193    10  10 
+   1191    10  10 
+    366     7  7 
+    169     5  4 1 
+    917     3  2 1 
+   1199     2  1 1 
+   1141     2  1 1 
+    953     2  1 1 
+    914     2  2 
+    895     2  1 1 
+    737     2  2 
+    713     2  2 
+    706     2  1 1 
+    022     2  1 1 
+            ^  ^
+	    |  |
+	    |  +-- A B C ... means one failure signature occurred A times,
+	    |      another occurred B times, a third occurred C times, ...
+	    +-- total number of failures for this test, equals A+B+C+...
+
+The tarball in this directory (files.gz) contains .out, .out.bad and
+possibly .full files for all failing test cases where a test failed
+on at least 5% of the QA hosts.
+
+==== QA Summary ====
+
+Date        Run Pass Fail Nrun Host
+2017-08-02  944  942    2   70|bo|bozo PCP 3.12.1 x86_64 Ubuntu 16.04 [py=3.5.2 se=disabled]
+Daily runs, but no QA         |bl|bozo-laptop PCP 3.12.1 i686 LinuxMint 15 [py=3.3.1 se=none]
+Daily runs, but no QA         |bv|bozo-vm PCP 3.12.1 x86_64 Debian 8.7 [py=3.4.2 se=none]
+2017-07-29  755  738   17  259|fu|fuji PCP 3.12.1 i386 Darwin 10.8.0 [py=2.6.1 se=none]
+2017-08-01  917  915    2   97|00|vm00 PCP 3.12.1 x86_64 Ubuntu 12.04 [py=2.7.3 se=none]
+2017-08-01  932  931    1   81|01|vm01 PCP 3.12.1 i686 Ubuntu 15.10 [py=3.4.3+ se=none]
+2017-08-01  939  938    1   75|02|vm02 PCP 3.12.1 i686 openSUSE 13.2 [py=3.4.5 se=none]
+2017-08-01  950  947    3   64|03|vm03 PCP 3.12.1 x86_64 Fedora 24 [py=3.5.2 se=disabled]
+2017-08-02  950  945    5   64|04|vm04 PCP 3.12.1 x86_64 CentOS Linux7.3.1611  [py=2.7.5 se=enforcing]
+2017-08-02  905  904    1  109|05|vm05 PCP 3.12.1 x86_64 Gentoo 2.2 [py=3.4.3 se=none]
+2017-08-02   61   61    0    4|06|vm06 PCP 3.12.1 amd64 FreeBSD 10.2-RELEASE [py=2.7.11 se=none]
+2017-08-02  930  929    1   84|07|vm07 PCP 3.12.1 x86_64 Debian 9.0 [py=3.5.3 se=none]
+2017-07-31  945  939    6   69|08|vm08 PCP 3.12.1 x86_64 CentOS Linux7.3.1611  [py=2.7.5 se=enforcing]
+2017-07-31   61   61    0    4|09|vm09 PCP 3.12.1 i386 NetBSD 6.1.5 [py=none se=none]
+2017-08-01   61   60    1    4|10|vm10 PCP 3.12.1 i386 FreeBSD 9.3-RELEASE-p30 [py=none se=none]
+2017-08-02  920  917    3   94|11|vm11 PCP 3.12.1 i686 Debian 9.0 [py=3.5.3 se=none]
+2017-08-02  947  944    3   67|12|vm12 PCP 3.12.1 i686 Fedora 24 [py=3.5.3 se=disabled]
+Daily runs, but no QA         |13|vm13 PCP unknown i86pc OpenIndiana Development oi_151.1.8
+2017-08-03  936  930    6   78|14|vm14 PCP 3.12.1 x86_64 CentOS6.9 [py=2.6.6 se=none]
+2017-07-31  853  853    0  161|15|vm15 PCP 3.12.1 x86_64 Slackware "14.2" [py=2.7.11 se=none]
+2017-08-03  935  934    1   79|18|vm18 PCP 3.12.1 x86_64 LinuxMint 17.3 [py=3.4.3 se=none]
+2017-07-30  909  908    1  105|19|vm19 PCP 3.12.1 x86_64 openSUSE 42.1 [py=3.4.5 se=none]
+2017-07-30  932  932    0   82|20|vm20 PCP 3.12.1 x86_64 Ubuntu 14.04 [py=3.4.3 se=none]
+2017-07-30  918  916    2   96|21|vm21 PCP 3.12.1 i686 Debian 7.11 [py=2.7.3 se=none]
+2017-07-30  950  950    0   64|22|vm22 PCP 3.12.1 x86_64 Fedora 25 [py=3.5.3 se=enforcing]
+2017-07-31  949  948    1   65|23|vm23 PCP 3.12.1 i686 Fedora 25 [py=3.5.3 se=enforcing]
+2017-07-31  907  904    3  107|24|vm24 PCP 3.12.1 x86_64 openSUSE 42.2 [py=3.4.5 se=disabled]
+2017-07-31  943  938    5   71|25|vm25 PCP 3.12.1 x86_64 CentOS Linux7.3.1611  [py=2.7.5 se=enforcing]
+2017-08-01  945  944    1   69|26|vm26 PCP 3.12.1 x86_64 Fedora 21 [py=3.4.1 se=enforcing]
+2017-08-02  926  924    2   88|27|vm27 PCP 3.12.1 x86_64 Ubuntu 15.04 [py=3.4.3 se=none]
+2017-07-31  935  930    5   79|28|vm28 PCP 3.12.1 x86_64 RHEL Server 6.9 [py=2.6.6 se=enforcing]
+2017-07-30  942  938    4   72|29|vm29 PCP 3.12.1 x86_64 RHEL Server 7.3 [py=2.7.5 se=enforcing]
+2017-07-31  936  932    4   78|30|vm30 PCP 3.12.1 x86_64 SUSE SLES12 SP0 [py=2.7.9 se=none]
+2017-08-01  940  934    6   74|31|vm31 PCP 3.12.1 x86_64 Fedora 23 [py=2.7.11 se=disabled]
+2017-08-03   74   74    0    5|32|vm32 PCP 3.12.1 amd64 FreeBSD 11.0-CURRENT [py=2.7.11 se=none]
+2017-08-03   64   64    0    1|33|vm33 PCP 3.12.1 amd64 OpenBSD 5.8 [py=3.4.3 se=none]
+2017-08-02  929  929    0   85|34|vm34 PCP 3.12.1 x86_64 Arch Linux  [py=3.5.1 se=none]
+2017-08-02   44   44    0    7|35|vm35 PCP 2.7.8 x86_64 Ubuntu 14.04
+Summary: 27184 run, 87 failed (0.32%)
+
+==== QA Failure (X) and Not Run or Skipped (-) Map ====
+
+Host       bo fu 00 01 02 03 04 05 07 08 10 11 12 14 18 19 21 23 24 25 26 27 28 29 30 31
+Test %fail                                                                               Test QA groups
+1191   29%     -  X           X        X  -        X        X        X        X  X  X  X 1191 pmda.prometheus pmda.install
+1193   29%     -  X           X        X  -        X        X        X        X  X  X  X 1193 pmda.prometheus
+ 366   20%  X  -                    X     -  X  X  X  X  -        -        X        -     366 pmlogconf
+ 169   14%                    X        X  -        X                 X  X                 169 pmcd
+ 917    9%  -  -  -  -  -  X  X  -  -  -  -  -  X     -  -  -     -  -     -  -  -  -  -  917 selinux
+ 022    6%     -           X              -     X                                         022 context_local pmda pmda.proc
+ 706    6%                                -  X                    X                       706 libpcp
+ 713    6%     -     X           -        -                                   X           713 context libpcp pmproxy secure
+ 737    6%                                -        X                          X           737 python timezone
+ 895    6%     -                       X  -        X                                      895 pmlogger
+ 914    6%     -  -           X  -  -  X  -  -              -        -  -  -  -  -  -  -  914 pmda.papi
+ 953    6%     X                          -                                         X     953 libpcp threads valgrind
+1141    6%  -  -  -  -  -        -  -  X  -  -        -  -  -     -  X     -  -  -  -  - 1141 selinux
+1199    6%     X                          -                                            X 1199 libpcp pmcd
+ 098    3%     X                          -                                               098 pmlc pmlogger other pmdumplog
+ 102    3%     X                          -                                               102 pmlc pmlogger
+ 152    3%                                -              X                                152 pmda.pmcd pmval
+ 156    3%     X                          -                                               156 pmda.sample pmda.proc pmcd_wait pmda.install
+Host       bo fu 00 01 02 03 04 05 07 08 10 11 12 14 18 19 21 23 24 25 26 27 28 29 30 31
+Test %fail                                                                               Test QA groups
+ 172    3%                                -                       X                       172 pmcd pmlc
+ 178    3%                                X                                               178 logutil pmval pmlogextract pmdumplog pmlogger
+ 243    3%     X                          -                                               243 pmcd pmprobe
+ 279    3%     X                          -                                               279 pmcd
+ 315    3%                                -                                      X        315 pmie pmieutil
+ 326    3%                                -                                X              326 pmlogger pmval libpcp pmcd pmda.install folio pmdumplog pmlc timezone
+ 353    3%  X  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  353 pmsocks
+ 356    3%                                -                                            X  356 derive pmie
+ 430    3%     X                          -                                               430 logutil folio
+ 518    3%                                -                                            X  518 pcp flakey pmie
+ 565    3%     X                          -                                               565 pmda.sendmail pmda.install
+ 587    3%                                -  X                                            587 pmcd pmda.install pmda.trivial
+ 603    3%                                -              -        -  X                    603 trace pmda.install
+ 651    3%                                -                                            X  651 pmproxy
+ 666    3%                 X              -                                               666 pmmgr slow valgrind
+ 667    3%     -                          -        -              X                       667 python
+ 702    3%     X                          -                                               702 python libpcp
+ 769    3%                       -        -                                      X        769 other
+ 870    3%                       X        -                                               870 pmlogcheck
+ 878    3%                                -                                         X     878 pmda.pipe pmval
+ 884    3%     X                          -                                               884 libpcp_web
+Host       bo fu 00 01 02 03 04 05 07 08 10 11 12 14 18 19 21 23 24 25 26 27 28 29 30 31
+Test %fail                                                                               Test QA groups
+ 905    3%     X                          -              -        -                       905 oldversion
+ 956    3%     X                          -                                               956 pmcd
+ 983    3%     -                          -        -           X                          983 pmie
+1051    3%     X                          -                                              1051 pmieconf
+1077    3%     X                          -                                              1077 pmcd libpcp archive
+1084    3%     X                          -                                              1084 pmda.linux
+1388    3%     -  -     X        -        -  -                             -             1388 pmwebapi
+4751    3%     -  -  -  -           -     -           -                       X     -    4751 libpcp threads valgrind
+Test %fail                                                                               Test QA groups
+Host       bo fu 00 01 02 03 04 05 07 08 10 11 12 14 18 19 21 23 24 25 26 27 28 29 30 31
