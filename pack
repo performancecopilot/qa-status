@@ -209,6 +209,8 @@ then
 else
     echo "To send email ..."
     echo '$ sendcommitmail'
+    echo "Remember ... "
+    echo "$ git commit -m 'QA Status as of `date +%Y%m%d`'"
 fi
 
 sts=0
