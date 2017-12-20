@@ -190,7 +190,6 @@ rm -f /tmp/msg
 cat <<End-of-File >/tmp/msg
 Details for the most commonly failing tests are available from
 https://github.com/performancecopilot/qa-status
-(note we've moved from oss.sgi.com to github)
 
 === Synopsis ===
 
@@ -208,9 +207,11 @@ then
     echo "Created /tmp/msg"
 else
     echo "Remember ... "
-    echo "$ git commit -m 'QA Status as of `date +%Y%m%d`'"
-    echo "Then to send email ..."
-    echo '$ sendcommitmail'
+    echo "\$ git commit -a -m 'QA Status as of `date +%Y%m%d`'"
+    echo "then ..."
+    echo "\$ git push"
+    echo "then to send email ..."
+    echo "\$ sendcommitmail"
 fi
 
 sts=0
