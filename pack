@@ -207,11 +207,7 @@ then
     echo "Created /tmp/msg"
 else
     echo "Remember ... "
-    echo "\$ git commit -a -m 'QA Status as of `date +%Y%m%d`'"
-    echo "then ..."
-    echo "\$ git push"
-    echo "then to send email ..."
-    echo "\$ sendcommitmail"
+    echo "\$ git commit -a -m 'QA Status as of `date +%Y%m%d`'; git push; sendcommitmail"
 fi
 
 sts=0
