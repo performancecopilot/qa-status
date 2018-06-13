@@ -189,7 +189,10 @@ $nflag || rm -rf [0-9]*
 rm -f /tmp/msg
 cat <<End-of-File >/tmp/msg
 Details for the most commonly failing tests are available from
-https://github.com/performancecopilot/qa-status
+https://github.com/kmcdonell/qa-status
+(Note I've cloned the git tree for this stuff because of some 2FA
+changes, so I'm using my tree, not the one below performancecopilot
+on github).
 
 === Synopsis ===
 
