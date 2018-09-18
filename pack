@@ -170,9 +170,11 @@ cat <<End-of-File >>README
 	    |      another occurred B times, a third occurred C times, ...
 	    +-- total number of failures for this test, equals A+B+C+...
 
-The tarball in this directory (files.gz) contains .out, .out.bad and
+The tarball in this directory (files.tgz) contains .out, .out.bad and
 possibly .full files for all failing test cases where a test failed
-on at least ${threshold}% of the QA hosts.
+on at least ${threshold}% of the QA hosts.  The files are gathered into
+one directory per test, with the files renamed to include a hostname:
+prefix to disambiguate similar files from different QA hosts.
 
 End-of-File
 cat summary >>README
@@ -189,10 +191,9 @@ $nflag || rm -rf [0-9]*
 rm -f /tmp/msg
 cat <<End-of-File >/tmp/msg
 Details for the most commonly failing tests are available from
-https://github.com/kmcdonell/qa-status
-(Note I've cloned the git tree for this stuff because of some 2FA
-changes, so I'm using my tree, not the one below performancecopilot
-on github).
+https://github.com/performancecopilot/qa-status
+(Note Nathan fixed the permissions issue and so I've moved back to the official
+git tree ... I'll kill off the kmcdonell one after the next push)
 
 === Synopsis ===
 
