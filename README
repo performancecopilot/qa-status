@@ -1,22 +1,15 @@
 QA Status from Ken McDonell's QA Farm in Melbourne
 
-Last updated: Tue 18 Sep 06:45:14 AEST 2018
+Last updated: Tue 13 Nov 09:31:20 AEDT 2018
 
-Summary: 33228 run, 60 failed (0.18%)
+Summary: 32520 run, 36 failed (0.11%)
 
 QA Test  Fail  Failure Signatures (number of different failure patterns)
-    917     5  4 1 
-   1349     3  1 
-   1199     3  1 1 
-    681     3  2 1 
-   1267     2  
-   1173     2  1 
-   1172     2  1 
-   1141     2  1 
-    366     2  1 
-    359     2  1 
+   1141     5  2 1 1 1 
+    917     3  2 1 
+    740     2  1 1 
     169     2  1 1 
-    083     2  1 1 
+    066     2  1 1 
             ^  ^
 	    |  |
 	    |  +-- A B C ... means one failure signature occurred A times,
@@ -25,49 +18,52 @@ QA Test  Fail  Failure Signatures (number of different failure patterns)
 
 The tarball in this directory (files.tgz) contains .out, .out.bad and
 possibly .full files for all failing test cases where a test failed
-on at least 5% of the QA hosts.
+on at least 5% of the QA hosts.  The files are gathered into
+one directory per test, with the files renamed to include a hostname:
+prefix to disambiguate similar files from different QA hosts.
 
 ==== QA Summary ====
 
 Date        Run Pass Fail Nrun Host
-2018-09-18 1115 1110    5   88|bo|bozo PCP 4.1.1 x86_64 Ubuntu 18.04 [py=3.6.5 se=disabled]
-2018-09-13 1088 1084    4  115|bv|bozo-vm PCP 4.1.1 x86_64 Debian 9.5 [py=3.5.3 se=none]
-2018-09-17 1087 1086    1  116|00|vm00 PCP 4.1.1 x86_64 Ubuntu 14.04 [py=3.4.3 se=none]
-2018-09-17 1086 1085    1  116|01|vm01 PCP 4.1.1 i686 Ubuntu 18.04 [py=3.6.5 se=none]
-2018-09-17 1094 1092    2  109|02|vm02 PCP 4.1.1 i686 openSUSE 13.2 [py=3.4.5 se=none]
-2018-09-17 1134 1134    0   69|03|vm03 PCP 4.1.1 x86_64 Fedora 26 [py=3.6.5 se=disabled]
-2018-09-17 1109 1107    2   94|04|vm04 PCP 4.1.1 x86_64 CentOS Linux7.5.1804  [py=2.7.5 se=enforcing]
-2018-09-17 1058 1057    1  145|05|vm05 PCP 4.1.1 x86_64 Gentoo 2.2 [py=3.4.3 se=none]
-2018-09-17   71   71    0    4|06|vm06 PCP 4.1.1 amd64 FreeBSD 10.3-RELEASE-p24 [py=2.7.14 se=none]
-2018-09-17 1087 1085    2  116|07|vm07 PCP 4.1.1 x86_64 Debian 9.4 [py=3.5.3 se=none]
-2018-09-17 1103 1100    3  100|08|vm08 PCP 4.1.1 x86_64 CentOS Linux7.4.1708  [py=2.7.5 se=enforcing]
-2018-09-17   71   70    1    4|09|vm09 PCP 4.1.1 i386 NetBSD 6.1.5 [py=3.4.8 se=none]
-2018-09-17   68   68    0    7|10|vm10 PCP 4.1.1 i386 FreeBSD 9.3-RELEASE-p30 [py=none se=none]
-2018-09-15 1087 1087    0  116|11|vm11 PCP 4.1.1 i686 Debian 9.4 [py=3.5.3 se=none]
-2018-09-15 1105 1105    0   98|12|vm12 PCP 4.1.1 i686 Fedora 26 [py=3.6.5 se=disabled]
-2018-09-15   70   68    2    5|13|vm13 PCP 4.1.1 i86pc OpenIndiana Hipster 2017.10 [py=3.4.7 se=none]
-2018-09-17 1085 1081    4  118|14|vm14 PCP 4.1.1 x86_64 CentOS6.9 [py=2.6.6 se=none]
-2018-09-15  985  983    2  217|15|vm15 PCP 4.1.0 x86_64 Slackware "14.2" [py=2.7.11 se=none]
-2018-09-15 1092 1092    0  111|18|vm18 PCP 4.1.1 x86_64 LinuxMint 17.3 [py=3.4.3 se=none]
-2018-09-15 1093 1092    1  110|19|vm19 PCP 4.1.1 x86_64 openSUSE 42.3 [py=3.4.6 se=disabled]
-2018-09-15 1104 1101    3   99|20|vm20 PCP 4.1.0 x86_64 Ubuntu 18.04 [py=3.6.5 se=none]
-2018-09-15 1073 1069    4  130|21|vm21 PCP 4.1.1 i686 Debian 7.11 [py=2.7.3 se=none]
-2018-09-15 1110 1109    1   93|22|vm22 PCP 4.1.1 x86_64 Fedora 25 [py=3.5.4 se=enforcing]
-2018-09-15 1108 1107    1   95|23|vm23 PCP 4.1.1 i686 Fedora 25 [py=3.5.4 se=enforcing]
-2018-09-16 1081 1080    1  111|24|vm24 PCP 4.1.1 x86_64 openSUSE 42.2 [py=3.4.6 se=disabled]
-2018-09-16 1105 1103    2   98|25|vm25 PCP 4.1.1 x86_64 CentOS Linux7.3.1611  [py=2.7.5 se=enforcing]
-2018-09-16 1109 1108    1   94|26|vm26 PCP 4.1.1 x86_64 Fedora 27 [py=3.6.3 se=enforcing]
-2018-09-16 1097 1096    1  106|27|vm27 PCP 4.1.1 x86_64 Ubuntu 16.04 [py=3.5.2 se=none]
-2018-09-16 1083 1078    5  120|28|vm28 PCP 4.1.1 x86_64 RHEL Server 6.9 [py=2.6.6 se=enforcing]
-2018-09-16 1106 1103    3   97|29|vm29 PCP 4.1.1 x86_64 RHEL Server 7.5 [py=2.7.5 se=enforcing]
-2018-09-16 1081 1080    1  122|30|vm30 PCP 4.1.1 x86_64 SUSE SLES12 SP0 [py=3.4.1 se=disabled]
-2018-09-16 1101 1100    1  102|31|vm31 PCP 4.1.1 x86_64 Fedora 23 [py=3.4.3 se=disabled]
-2018-09-16   84   84    0    5|32|vm32 PCP 4.1.1 amd64 FreeBSD 11.0-CURRENT [py=2.7.11 se=none]
-2018-09-17   74   72    2    1|33|vm33 PCP 4.1.1 amd64 OpenBSD 5.8 [py=3.4.3 se=none]
-2018-09-16 1088 1087    1  115|34|vm34 PCP 4.1.1 x86_64 Arch Linux  [py=3.6.4 se=none]
-2018-09-16   44   44    0    7|35|vm35 PCP 2.7.8 x86_64 Ubuntu 14.04
-2018-09-14 1092 1090    2  111|36|vm36 PCP 4.1.1 x86_64 LinuxMint 18.3 [py=3.5.2 se=none]
-Summary: 33228 run, 60 failed (0.18%)
+2018-11-13 1126 1125    1   89|bo|bozo PCP 4.2.0 x86_64 Ubuntu 18.04 [py=3.6.6 se=disabled]
+2018-11-08 1099 1096    3  115|bv|bozo-vm PCP 4.2.0 x86_64 Debian 9.5 [py=3.5.3 se=none]
+2018-11-12 1098 1098    0  116|00|vm00 PCP 4.2.0 x86_64 Ubuntu 14.04 [py=3.4.3 se=none]
+2018-11-12 1096 1095    1  117|01|vm01 PCP 4.2.0 i686 Ubuntu 18.04 [py=3.6.6 se=none]
+2018-11-12 1124 1124    0   90|02|vm02 PCP 4.2.0 x86_64 openSUSE Leap 15.0 [py=3.6.5 se=none]
+2018-11-12 1144 1142    2   70|03|vm03 PCP 4.2.0 x86_64 Fedora 27 [py=3.6.6 se=disabled]
+2018-11-12 1117 1117    0   97|04|vm04 PCP 4.2.0 x86_64 CentOS Linux7.5.1804  [py=2.7.5 se=enforcing]
+2018-11-12 1029 1027    2  121|05|vm05 PCP 4.2.0 x86_64 Gentoo 2.4.1 [py=3.6.5 se=none]
+2018-11-12   71   71    0    4|06|vm06 PCP 4.2.0 amd64 FreeBSD 10.4-RELEASE-p13 [py=3.6.6 se=none]
+2018-11-09 1093 1093    0  121|07|vm07 PCP 4.2.0 x86_64 Debian 9.4 [py=2.7.13 se=none]
+2018-11-12 1114 1112    2  101|08|vm08 PCP 4.2.0 x86_64 CentOS Linux7.5.1804  [py=2.7.5 se=enforcing]
+2018-11-12   71   71    0    4|09|vm09 PCP 4.2.0 i386 NetBSD 6.1.5 [py=3.6.5 se=none]
+2018-11-12  171  170    1   18|10|vm10 PCP 4.2.0 i386 FreeBSD 10.4-RELEASE-p13 [py=3.6.6 se=none]
+2018-11-10 1095 1095    0  119|11|vm11 PCP 4.2.0 i686 Debian 9.6 [py=3.5.3 se=none]
+2018-11-10 1113 1111    2  101|12|vm12 PCP 4.2.0 i686 Fedora 26 [py=3.6.5 se=disabled]
+2018-11-10   70   68    2    5|13|vm13 PCP 4.2.0 i86pc OpenIndiana Hipster 2017.10 [py=3.4.7 se=none]
+2018-11-10   40   39    1    2|14|vm14 PCP 4.2.0 x86_64 CentOS6.10 [py=2.6.6 se=none]
+2018-11-10  992  992    0  221|15|vm15 PCP 4.2.0 x86_64 Slackware 14.2 [py=2.7.15 se=none]
+2018-11-12  871  870    1   71|18|vm18 PCP 4.2.0 x86_64 LinuxMint 17.3 [py=3.4.3 se=none]
+2018-11-10 1103 1102    1  111|19|vm19 PCP 4.2.0 x86_64 openSUSE 42.3 [py=3.4.6 se=disabled]
+2018-11-07 1105 1105    0  106|20|vm20 PCP 4.2.0 x86_64 Ubuntu 18.04 [py=3.6.5 se=none]
+2018-11-11 1101 1100    1  113|21|vm21 PCP 4.2.0 i686 Debian 9.5 [py=3.5.3 se=none]
+2018-11-10 1118 1118    0   96|22|vm22 PCP 4.2.0 x86_64 Fedora 25 [py=3.5.4 se=enforcing]
+2018-11-10 1116 1116    0   98|23|vm23 PCP 4.2.0 i686 Fedora 25 [py=3.5.4 se=enforcing]
+2018-11-11 1099 1097    2  115|24|vm24 PCP 4.2.0 x86_64 openSUSE 42.2 [py=3.4.6 se=disabled]
+2018-11-11 1103 1103    0  111|25|vm25 PCP 4.2.0 x86_64 CentOS Linux7.5.1804  [py=3.6.6 se=enforcing]
+2018-11-11 1136 1134    2   78|26|vm26 PCP 4.2.0 x86_64 Fedora 27 [py=3.6.6 se=enforcing]
+2018-11-11 1106 1105    1  108|27|vm27 PCP 4.2.0 x86_64 Ubuntu 16.04 [py=3.5.2 se=none]
+2018-11-11 1093 1091    2  121|28|vm28 PCP 4.2.0 x86_64 RHEL Server 6.10 [py=2.6.6 se=enforcing]
+2018-11-11 1114 1112    2  100|29|vm29 PCP 4.2.0 x86_64 RHEL Server 7.5 [py=2.7.5 se=enforcing]
+2018-11-11 1090 1088    2  124|30|vm30 PCP 4.2.0 x86_64 SUSE SLES12 SP0 [py=3.4.1 se=disabled]
+2018-11-11 1131 1129    2   83|31|vm31 PCP 4.2.0 x86_64 Fedora 28 [py=3.6.6 se=disabled]
+2018-11-11  168  167    1   20|32|vm32 PCP 4.2.0 amd64 FreeBSD 11.1-RELEASE [py=3.6.6 se=none]
+2018-11-12   74   73    1    1|33|vm33 PCP 4.2.0 amd64 OpenBSD 5.8 [py=3.4.3 se=none]
+2018-11-11 1097 1096    1  117|34|vm34 PCP 4.2.0 x86_64 Arch Linux  [py=3.6.4 se=none]
+2018-11-11   44   44    0    7|35|vm35 PCP 2.7.8 x86_64 Ubuntu 14.04 [py=none se=none]
+2018-11-13 1101 1101    0  114|36|vm36 PCP 4.2.0 x86_64 LinuxMint 18.3 [py=3.5.2 se=none]
+2018-11-12   87   87    0    8|37|vm37 PCP 4.2.0 amd64 OpenBSD 6.4 [py=3.6.6 se=none]
+Summary: 32520 run, 36 failed (0.11%)
 
 Warning: the following tests have not been run at all because they do not
          satisfy the cross-platform robustness criteria.
@@ -81,53 +77,36 @@ Warning: the following tests have not been run at all because they do not
 
 ==== QA Failure (X) and Not Run or Skipped (-) Map ====
 
-Host       bo bv 00 01 02 04 05 07 08 09 13 14 15 19 20 21 22 23 24 25 26 27 28 29 30 31 33 34 36
-Test %fail                                                                                        Test QA groups
- 917   14%  -  -  -  -  -  X  -  -  X  -  -     -  -  -  -  X  X  -        -  -  X  -  -  -  -  -  917 selinux
- 681    8%     X              X  X     -  -     -                                         -        681 libpcp
-1199    8%                          X  -  -  X                          X                 -       1199 libpcp pmcd
-1349    8%              X              -  -  X                                X           -       1349 pmlogrewrite labels pmdumplog
- 083    5%                          X  -  -                                               -     X  083 pmlc pmlogger compat
- 169    5%                 X           -  -        X                                      -        169 pmcd pmstore
- 359    5%     X                                                              X                    359 pmcd pminfo
- 366    5%                             -  -     -  -              -           X     -     -  X     366 pmlogconf
-1141    5%  -  -  -  -  -     -  -     -  -  X  -  -  -  -        -        -  -     -  X  -  -  - 1141 selinux
-1172    5%  X  -  -  -  -  -  -  -  -  -  -  -  -  -  X  -  -  -  -  -  -  -  -  -  -  -  -  -  - 1172 pmda.bcc python
-1173    5%  X  -  -  -  -  -  -  -  -  -  -  -  -  -  X  -  -  -  -  -  -  -  -  -  -  -  -  -  - 1173 pmda.bcc python
-1267    5%                             -  -  X                                X           -       1267 pmlogrewrite labels help pmdumplog
- 034    3%                                                                                X        034 archive pmdumplog
- 069    3%                             -  -                                               -     X  069 pmcd pmval pmstore folio
- 091    3%                                X                                                        091 archive
- 178    3%                                                                                X        178 pmval pmlogextract pmdumplog pmlogger
- 183    3%  X                          -  -                                               -        183 pmlc pmnewlog
- 326    3%                             -  -                                X              -        326 pmlogger pmval libpcp pmcd pmda.install folio pmdumplog pmlc timezone
-Host       bo bv 00 01 02 04 05 07 08 09 13 14 15 19 20 21 22 23 24 25 26 27 28 29 30 31 33 34 36
-Test %fail                                                                                        Test QA groups
- 353    3%  X  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  353 pmsocks
- 388    3%                             -  -     -        X                                -        388 archive mem_leak valgrind
- 393    3%                             -  -     -        X                                -        393 archive mem_leak valgrind
- 394    3%                             -  -     -        X                                -        394 archive mem_leak valgrind flakey
- 532    3%                             -  -     X                                         -        532 logutil pmlogextract pmdumplog
- 565    3%                             -  -                                      X        -        565 pmda.sendmail pmda.install
- 567    3%                                X                                                        567 libpcp labels python
- 603    3%                             -  -                          X                    -        603 trace pmda.install
- 620    3%                             -  -     -        X                                -        620 pmlogsize valgrind
- 642    3%                             -  -                                      X        -        642 pmda.trivial pmns pmda.simple pmda.sample pmda.sendmail trace
- 666    3%                             -  -                                         X     -        666 pmmgr slow valgrind pmrep python pmlogrewrite
- 702    3%                             X  -                                                        702 python libpcp
- 713    3%           X        -        -  -                                               -        713 context libpcp pmproxy secure
- 755    3%                             -  -     X                                         -        755 pmda.apache pmda.install
- 895    3%     X                       -  -                                               -        895 pmlogger
- 964    3%        X                    -  -                                               -        964 pmcd pmda.xfs pmda.dm
- 999    3%     X                       -  -                                               -        999 pmns
-1067    3%              -  -  -     -  -  -  -  -  -     -        -  -        X  -  -     -  -    1067 zabbix zbxpcp
-1116    3%     -  -  -  -  -  -  -  -  -  -  -  -  -  X  -  -  -  -  -  -  -  -  -  -  -  -  -  - 1116 pmda.bcc python
-1123    3%                       X     -  -     -     -                                   -       1123 pmchart
-1343    3%  X  -  -  -  -     -  -     -  -  -  -  -  -  -        -        -  -           -       1343 pmmgr pmlogrewrite
-Host       bo bv 00 01 02 04 05 07 08 09 13 14 15 19 20 21 22 23 24 25 26 27 28 29 30 31 33 34 36
-Test %fail                                                                                        Test QA groups
-1350    3%                             -  -                          X                    -       1350 pmda.proc
-1385    3%                             -  -  -  -                 X           -     -     -       1385 pmda.prometheus python
-1399    3%              X              -  -                       -                       -       1399 pidstat
-Test %fail                                                                                        Test QA groups
-Host       bo bv 00 01 02 04 05 07 08 09 13 14 15 19 20 21 22 23 24 25 26 27 28 29 30 31 33 34 36
+Host       bo bv 01 03 05 08 10 12 13 14 18 19 21 24 26 27 28 29 30 31 32 33 34
+Test %fail                                                                      Test QA groups
+1141   13%  -  -  -  X  -     -  X  -  -  -  X  -  -  X  -        -  X  -  -  - 1141 selinux
+ 917    8%  -  -  -  X  -     -  X  -  -  -  -  -  -  X  -        -  -  -  -  -  917 selinux
+ 066    5%                    -     -  -                       X     X  -  -     066 pmcd folio
+ 169    5%                 X  -     -  -                    X           -  -     169 pmcd pmstore
+ 740    5%     X              -     -  -           X                    -  -     740 pmda.sample pmstore secure
+ 034    3%                                                                 X     034 archive pmdumplog
+ 041    3%                    -     -  X                                -  -     041 pmcd
+ 083    3%                    -     -  -           X                    -  -     083 pmlc pmlogger compat
+ 091    3%                          X  -                                         091 archive
+ 326    3%                          -  -                 X                 -     326 pmlogger pmval libpcp pmcd pmda.install folio pmdumplog pmlc timezone
+ 353    3%  X  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  353 pmsocks
+ 366    3%  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  X  366 pmlogconf
+ 412    3%                          -  -                                X  -     412 wrap archive libpcp pmval pmdumplog timezone pmstore
+ 506    3%        -  -  -  -  -  -  -  -  -  -  X  -  -  -  -  -  -  -  -  -  -  506 pmlogrewrite slow
+ 524    3%                          -  -                    X              -     524 libpcp pmlogger pmdumplog
+ 542    3%              X     -     -  -                                -  -     542 pmdate
+ 567    3%                          X  -                                         567 libpcp labels python
+ 650    3%                    -     -  -                          X     -  -     650 pmlogger pmdumplog
+Host       bo bv 01 03 05 08 10 12 13 14 18 19 21 24 26 27 28 29 30 31 32 33 34
+Test %fail                                                                      Test QA groups
+ 651    3%                    -     -  -                          X     -  -     651 pmproxy
+ 681    3%     X        -     -     -  -                                -  -     681 valgrind libpcp
+ 713    3%        X           -     -  -                                -  -     713 context libpcp pmproxy secure
+ 802    3%     X        -     -     -  -                                -  -     802 pmda valgrind dbpmda
+ 859    3%                    X     -  -                                   -     859 python libpcp fetch
+ 870    3%              X     -     -  -                                -  -     870 pmlogcheck
+ 964    3%                    -     -  -  X                             -  -     964 pmcd pmda.xfs pmda.dm
+1108    3%                 X  -     -  -  -                             -  -    1108 logutil folio pmlogextract
+1123    3%                    -     -  -  -                    X        -  -    1123 pmchart
+Test %fail                                                                      Test QA groups
+Host       bo bv 01 03 05 08 10 12 13 14 18 19 21 24 26 27 28 29 30 31 32 33 34

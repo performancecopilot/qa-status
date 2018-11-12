@@ -39,6 +39,10 @@ then
     # NOTREACHED
 fi
 
+# make sure whatami.out is up to date
+#
+update-whatami.out
+
 rm -rf summary [0-9]*
 pcp-qa-summary -fr >summary
 $nflag && echo "Created summary"
