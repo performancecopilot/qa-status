@@ -196,8 +196,6 @@ rm -f /tmp/msg
 cat <<End-of-File >/tmp/msg
 Details for the most commonly failing tests are available from
 https://github.com/performancecopilot/qa-status
-(Note Nathan fixed the permissions issue and so I've moved back to the official
-git tree ... I'll kill off the kmcdonell one after the next push)
 
 === Synopsis ===
 
