@@ -148,6 +148,7 @@ cat <<End-of-File >>README
 QA Test  Fail  Failure Signatures (number of different failure patterns)
 End-of-File
 
+export LC_COLLATE=C
 sort $tmp.tmp \
 | uniq -c \
 | while read count seq
